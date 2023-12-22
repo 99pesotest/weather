@@ -30,7 +30,7 @@ def weather_detail(request):
         weather_object = Weather.objects.get(city=city_object, time_of_day='current')
         time_since_update = timezone.now() - weather_object.last_update_time
 
-        if time_since_update < timedelta(minutes=30):
+        if time_since_update > timedelta(minutes=30):
             update_weather_data(city_object)
             weather_object = Weather.objects.get(city=city_object, time_of_day='current')
 

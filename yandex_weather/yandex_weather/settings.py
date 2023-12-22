@@ -31,7 +31,8 @@ INSTALLED_APPS = [
     'rest_framework',
     'weatherapp',
     'external_services',
-    'cities_from_file'
+    'cities_from_file',
+    'weather_telegram_bot'
 ]
 
 MIDDLEWARE = [
