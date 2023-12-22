@@ -1,0 +1,17 @@
+server {
+    listen 80;
+    server_name ваш_домен_или_ip;ls
+
+    location / {
+        include proxy_params;
+        proxy_pass http://127.0.0.1:8000;
+    }
+
+    location /static/ {
+        root /путь_к_вашему_проекту;
+    }
+
+    location /media/ {
+        root /путь_к_вашему_проекту;
+    }
+}
