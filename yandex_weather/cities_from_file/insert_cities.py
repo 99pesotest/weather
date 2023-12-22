@@ -1,12 +1,8 @@
 
-import sys
-import os
-sys.path.append("..")
 from weatherapp.models import City
 
 
 def populate_cities_from_file(file_path):
-    print(os.listdir())
     with open(file_path, 'r') as file:
         for line in file:
             city_data = line.strip().split(':')
