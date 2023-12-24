@@ -84,10 +84,7 @@ def weather(update, context):
         city_object = get_city(city_name)
 
         if isinstance(city_object, dict):
-            if "Узнать погоду не найден" not in city_object.get("error"):
-                update.message.reply_text(city_object.get("error"))
-            else:
-                return
+            update.message.reply_text(city_object.get("error"))
 
         weather_data = weather_detail(city_object)
         data = weather_data.get("data")
