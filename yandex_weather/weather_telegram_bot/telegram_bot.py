@@ -84,7 +84,10 @@ def weather(update, context):
         city_object = get_city(city_name)
 
         if isinstance(city_object, dict):
-            update.message.reply_text(city_object.get("error"))
+            if "Узнать погоду не найден" not in city_object.get("error"):
+                update.message.reply_text(city_object.get("error"))
+            else:
+                return
 
         weather_data = weather_detail(city_object)
         data = weather_data.get("data")
@@ -93,11 +96,6 @@ def weather(update, context):
         update.message.reply_text(response_text)
     except ValueError as e:
         update.message.reply_text(str(e))
-
-
-def button_click(update, context):
-    text = update.message.text
-    context.bot.send_message(chat_id=update.message.chat_id, text=f'Вы нажали кнопку "{text}".')
 
 
 def main():
